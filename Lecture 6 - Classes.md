@@ -184,7 +184,7 @@ Basis b;
 struct Basis {
 	Vec v1, v2;
 	Basis() : v1{0, 1}, v2{1, 0} {...}
-	Basis (in tx1, int y1, int x2, int y2) 
+	Basis (in x1, int y1, int x2, int y2) 
 		: v1{x1, y1}, v2{x2, y2} {}
 }
 ```

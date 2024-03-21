@@ -143,7 +143,8 @@ ostream& operator<<(ostream& out, const Vec& v) {
 	- could instead have a counter, incremented for every add, decremented for every remove. size() becomes (amortized) O(1)
 
 e.g., 
-```C++ 
+```C++
+
 class List {
 	int ctr = 0;
 
@@ -164,7 +165,7 @@ auto operator<=>(const List& other) const {
 	
 	return (*theList <=> *other.theList);
 	// <=> -> Node::operator<=>
-}
+} 
 ```
 
 **Unified Modelling Language (UML)**

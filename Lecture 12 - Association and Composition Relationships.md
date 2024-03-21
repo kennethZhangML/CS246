@@ -57,9 +57,8 @@ Answer:
 - Until B (Vec) is not assigned to A (Basis), it can exist independently, image all the other linear algebra that requires Vectors
 - However, the moment it is assigned to Basis, it is bound to it, since the Basis must have 2 vectors
 - I can have other Vec objects floating around since they are not Bound to the Basis
-	- However, once you bind it, then it is as composite relationshi
+	- However, once you bind it, then it is as composite relationship
 - We could replace the Engine of a Car, though if a Car gets destroyed, so is the engine
-
 
 **Aggregation Relationships**
 - A "has-a" B sharing is allows
@@ -103,9 +102,9 @@ e.g., Math Student is a Student
 ![[Screenshot 2024-02-15 at 1.17.13 PM.png]]
 - Inheritance doesn't roll with multiplicities and roll names
 - Here, student can be called the "superclass" or the "parent class" or "base class"
-	- MathStudent and EngStudent will be called "subclasses" and children class or derived class respectively
-	- We should not be duplicating the information we are inheriting, that will cuase problems and will be a very very not smart thing to do
-	- Unless you want every class to have different implementatons of a function you inherited from the parent class
+	- MathStudent and EngineeringStudent will be called "subclasses" and children class or derived class respectively
+	- We should not be duplicating the information we are inheriting, that will cause problems and will be a very very not smart thing to do
+	- Unless you want every class to have different implementations of a function you inherited from the parent class
 - Motivating Example, Catalogue of Book, Comic and text objects
 ![[Screenshot 2024-02-15 at 1.24.52 PM.png]]
 - Note that isHeavy() is different for different objects and hence the function is overloaded and modified

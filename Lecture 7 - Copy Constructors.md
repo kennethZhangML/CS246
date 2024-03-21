@@ -111,7 +111,7 @@ f(Node{4});
 Consider previous linked list example:
 e.g.,
 ```C++
-Node *n = new NOde{1, new NodeP{2, new Node{3}}};
+Node *n = new Node{1, new NodeP{2, new Node{3}}};
 Node m = *n;
 Node *p = new Node{*m};
 ```
@@ -153,7 +153,7 @@ Node::operator = (const Node& other) {
 	if (other.next == nullptr) {
 		next = nullptr
 	} else {
-	next = new Node(*other.next);
+		next = new Node(*other.next);
 	}
 	return *this;
 }

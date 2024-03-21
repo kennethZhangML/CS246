@@ -48,7 +48,7 @@ arrType[0] = 0;
 Let's pretend for a moment that our Book inheritance hierarchy has default constructors. 
 - Can we make this work since a Comic (or Text) "is-a" Book?
 ```C++
-Comic {"Author", "Title", 32, "hero"};
+Comic c{"Author", "Title", 32, "hero"};
 Book arr[10];
 ```
 
@@ -105,7 +105,7 @@ Book
 ```
 Note: Virtual methods of parents are inherited as virtual whether or not we explicitly declare them as virtual 
 ```C++
-class Comic:public Book {
+class Comic : public Book {
 	...
 	public: 
 		bool isHeavy() const;

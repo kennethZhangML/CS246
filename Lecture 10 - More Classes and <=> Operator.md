@@ -2,21 +2,24 @@
 - std::strong_ordering has 4 constant values: less, greater, equal, equivalent(last 2 are the same)
     - operands must be comparable; otherwise use std::partial ordering or std::weak_ordering
 - Since std::strong_ordering is a lot to type, use type deduction:
-	- - auto x = \<expr>;
+	- auto x = \<expr>;
 	- //type of x is expr is
-	- example: auto res = s1 < = > s2;
+	- example: auto res = s1 <=> s2;
 
-Q: what if we want to add < = > to Vec?
+Q: what if we want to add <=> to Vec?
 A: equality is just 
 ```C++
-v1.x == v2.x && v1.y==v2.y
+v1.x == v2.x && v1.y == v2.y
 "less" v1.x < v2.x || (v1.x==v2.x && v1.y < v2.y)
 ```
 
 ```C++
 struct Vec{ 
-	auto operator <=>(const Vec& rhs){ auto n = x <=> rhs; 
-	if(n!=0) return n; n = y <=> rhs.y; return n; } 
+	auto operator <=>(const Vec& rhs){ 
+		auto n = x <=> rhs; 
+		if(n!=0) return n; 
+		n = y <=> rhs.y; 
+		return n; } 
 }
 
 //Example: 
@@ -49,13 +52,19 @@ Assertion: must be comparing 2 non-empty lists since comparing Node objects and 
 
 ```C++
 struct Node{ 
-	auto operator <=>(const Node& other){ auto n = data <=> other.data; 
-	if(n!=0) return n; 
-	if(next == nullptr && other.next == nullptr){ return n } 
-	if(next == nullptr) return std::strong_ordering::less; 
-	if(other.next == nullptr) return std::strong_ordering::greater; 
-	
-	return next <=> other.next; //recursively calling <=> on 2 nodes } }
+	auto operator <=>(const Node& other){ 
+		auto n = data <=> other.data;
+		if(n!=0) return n; 
+		if(next == nullptr && other.next == nullptr){ 
+			return n;
+		} 
+		if(next == nullptr) return std::strong_ordering::less; 
+		if(other.next == nullptr) return std::strong_ordering::greater; 
+		
+		return next <=> other.next; 
+		//recursively calling <=> on 2 nodes 
+		} 
+}
 ```
 
 Question: When is the default <=> behaviour not good enough?
@@ -102,7 +111,7 @@ Node n2{3, nullptr};
 Node n3{4, &n2};
 ```
 - crashes on n3 going out of scope since next had address of runtime stack allocated object 
-- unstated Node class invariantis that either next is a nullptr or it's a heap address (valid)
+- unstated Node class invariants that either next is a nullptr or it's a heap address (valid)
 
 e.g., Stack invariant: item popped is most recently pushed item 
 We care about invariants since we can't reason about code if they don't hold 
@@ -127,9 +136,6 @@ struct List {
 		~List() { delete theList; }
 		void add(int i); // adds i to the beginning of the list
 		int ith(int i) const;
-
-	private: 
-		
 }
 ```
 
@@ -163,7 +169,7 @@ module list;
 struct List::Node {
 	int data;
 	List::Node *next;
-		~Node() { delete next; }
+	~Node() { delete next; }
 };
 
 List::~List() { delete theList; }
