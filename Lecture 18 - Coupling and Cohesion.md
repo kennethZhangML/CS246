@@ -246,4 +246,9 @@ e.g.,
 	...
 } // p1 out of scope, frees pointer 
 ```
-- passes the raw
+- passes the raw pointer
+
+//lectures/26-unique_ptr
+- has a simplified sketch of a unique ptr implementation that disables copying
+- Summary: use appropriate pointer type based upon ownership
+	- less likely to have memory leaks
